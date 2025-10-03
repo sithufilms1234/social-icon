@@ -1,6 +1,3 @@
-// icons.js
-
-// SVG Icon List
 const icons = {
   "svg1": `<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
 <circle style="fill:#273B7A;" cx="256" cy="256" r="256"/>
@@ -41,27 +38,3 @@ l-42.105,34.504c23.362,43.735,69.441,73.506,122.487,73.506c34.451,0,65.943-12.57
 c-5.891,19.016-18.225,35.166-34.406,46.023l42.312,33.887C375.932,335.977,394.792,298.203,394.792,256z"/>
 </svg>`
 };
-
-
-// Icon Render Function (with customization)
-function renderIcons() {
-  document.querySelectorAll("[class^='svg']").forEach(el => {
-    const iconName = el.className.split(" ")[0]; // svg1, svg2, svg3
-    if (icons[iconName]) {
-      let svg = new DOMParser().parseFromString(icons[iconName], "image/svg+xml").documentElement;
-
-      // custom attributes
-      const size = el.getAttribute("data-size") || "100";   // default 100px
-      const color = el.getAttribute("data-color");          // optional override
-
-      svg.setAttribute("width", size);
-      svg.setAttribute("height", size);
-      if (color) svg.setAttribute("fill", color);
-
-      el.innerHTML = "";
-      el.appendChild(svg);
-    }
-  });
-}
-
-document.addEventListener("DOMContentLoaded", renderIcons);
